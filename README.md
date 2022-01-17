@@ -79,13 +79,55 @@ jisjo@my-lappy:~/$ tree .git/
 
 
 ```
-
-
-
-
 >  **git add** will create a checksum (md5) value of the content of a text file and it will create a directory under object with named chercksum value. 
 
 ```
 # echo "i am linux" > linux.txt
 # git add linux.txt 
 ```
+----
+
+## git rm --cached [file name]
+
+used to remove object from index file or staging area.
+
+
+## git ls-files
+
+```
+jisjo@my-lappy:~/$ git ls-files -s
+100644 8e491bf8546cdf6239b87caa4f8e47d5e55e4e57 0	linux.txt
+```
+Used to see the index file values (.git/index). By default the file content can't see using cat command because it is a compressed formate. ls-files is an internal command of git.
+
+----
+
+## git cat-file
+```
+jisjo@my-lappy:~/$ git cat-file -p 8e491bf8546cdf6239b87caa4f8e47d5e55e4e57
+i am linux
+```
+By default we can't see object data. We can see using an internal git command cat-file.
+
+----
+
+# git commint 
+
+```
+git commit -m " [commit message] "
+```
+
+it is taking backup of the actual file. This command records or snapshots the file permanently in the version history. 
+
+What is runnng background
+
+1. Creating Copy of index file
+    - created copy called Commit Tree (Object)
+2. Commit Object Creation.
+it will keep the details of who commited the object. Following details will contain in commit object.
+    - username
+    - email
+    - commit tree object id
+
+
+
